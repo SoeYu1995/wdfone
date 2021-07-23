@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Set Time Out</title>
+    </head>
+    <style>
+        .box{
+            margin-top :100px;
+            height: 200px;
+            width: 200px;
+            border: 1px solid rgb(138, 137, 137);
+            background-color: silver;
+            float: left;
+            margin-right: 50px;
+        }
+        .dragbox{
+            background-color: orange;
+            margin-bottom: 5px;
+        }
+    </style>
+    <body>
+        <button name="startint" id="startint" onclick="startinterval()">Start</button>
+        <button name="stopint" id="stopint" onclick="stopinterval()">Stop</button>
+        <div>
+            <h1 id="greeting">Hello Our website</h1>
+        </div>
+
+        <div>
+            <!-- <form action="#" method="POST"> -->
+                <input type="text" id="url" name="url"/>
+                <input type="button" id="gourl" value="GoUrl" onclick="gourl()"/>
+                <input type="button" id="favurl" value="FavUrl" onclick="favurl('http://linkin.com')"/>
+            <!-- </form> -->
+        </div>
+        <div>
+            <!-- <form action="#" method="POST"> -->
+                <input type="button" name="click1" id="click1" value="click1" onclick="clicked(this)"/>
+                <input type="button" name="click2" id="click2" value="click2" onclick="clicked(this)"/>
+                <input type="button" name="click3" id="click3" value="click3" onclick="clicked(this)"/>
+                <input type="button" name="click3" id="click3" value="click4" onclick="click4()"/>
+            <!-- </form> -->
+        </div>
+        <div class="box" ondrop="dropfun()" ondragover="dragover()">
+            <div class="dragbox" ondragstart="dragstart()" draggable="true">Have to cook</div>
+            <div class="dragbox" ondragstart="dragstart()" draggable="true">Have to shop</div>
+            <div class="dragbox" ondragstart="dragstart()" draggable="true">Have to study</div>
+            <div class="dragbox" ondragstart="dragstart()" draggable="true">Have to eat</div>
+        </div>
+        <div class="box" ondrop="dropfun()" ondragover="dragover()">
+            Box1
+        </div>
+        <div class="box" ondrop="dropfun()" ondragover="dragover()">
+            Box2
+        </div>
+        <div class="box" ondrop="dropfun()" ondragover="dragover()">
+            Box3
+        </div>
+
+
+        <hr/>
+        <div id="display" style="clear: both;"></div>
+            <!-- <form action="#" method="POST"> -->
+                <label for="firstname">First Name</label>
+                <input type="type" name="firstname" id="firstname" class="" onchange="valuechange(this)"/><br/><br/>
+                <label for="lastname">Last Name</label>
+                <!-- onchange and onblur is same!!! -->
+                <input type="type" name="lastname" id="lastname" class="" onblur="valuechange(this)"/><br/><br/>
+                <input type="submit" name="sentinfo" id="sentinfo" value="Send Info" onclick=""/>
+            <!-- </form> -->
+        <div>
+            <!-- <form action="" method="POST"> -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTdbwDjH4CX0RYUJKuknhzsWNyq8HwFqJa0g&usqp=CAU" 
+                name="myimg" id="myimg" class="" width="100px"/>
+                <select name="size" id="size" class="" onchange="sizechange(this)">
+                    <option value="select" selected disabled>Select</option>
+                    <option value="50">Small</option>
+                    <option value="150">Medium</option>
+                    <option value="200">Large</option>
+                </select>
+            <!-- </form> -->
+        </div>
+    </body>
+    <script type="text/javascript">
+        function mypopup(){
+            window.alert("Welcome Sir");
+        }
+        function startinterval(){
+            mypopup();
+            mytimer = window.setTimeout(startinterval,5000);
+        }
+        function stopinterval(){
+            window.clearInterval(mytimer);
+        }
+        window.setTimeout(newMsg,3000);
+        function newMsg(){
+            document.getElementById("greeting").innerHTML="Get Out Thar Gyi";
+        }
+        function gourl(){
+            let url = document.getElementById("url");
+            window.location="http://"+url.value;
+        }
+        function favurl(aa){
+            window.location = aa;
+        }
+        function clicked(t){
+            t.value = "clicked";
+        }
+        function click4(){
+            let clicked = event;
+            console.log(clicked);
+        }
+        let item;
+        function dragstart(){
+            item = event.target;
+        }
+        function dropfun(){
+            console.log("I am accepting dropping");
+            event.preventDefault();
+            if(event.target.className==="box"){
+                event.target.appendChild(item);
+            }
+        }
+        function dragover(){
+            event.preventDefault();
+        }
+        function valuechange(t) {
+            let getname = t.name;
+            let display = document.getElementById("display");
+            if(getname === "firstname"){
+                display.innerHTML = ("First name change to ="+t.value);
+            } else {
+                display.innerHTML = ("Second name change to =" + t.value);
+            }
+        }
+        function sizechange(t){
+            let size = t.value;
+            let getmyimg = document.getElementById("myimg");
+            // console.log(t.parentElement);
+        }
+    </script>
+</html>

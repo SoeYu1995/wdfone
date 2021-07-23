@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Local Storage</title>
+    </head>
+    <body>
+        
+    </body>
+    <script type="text/javascript">
+    //local storage (Set)
+    localStorage.setItem("name","Soeyu");
+    localStorage.setItem("age",27);
+    localStorage.setItem("city","Yangon");
+
+    //Update Method1
+    localStorage.setItem("name","kyaw");
+
+    //Update Method2
+    localStorage.age = 30;
+
+    //local Storage(Get)
+    let name=localStorage.getItem("name");
+    let age=localStorage.getItem("age");
+    let city=localStorage.getItem("city");
+
+    document.write(name);
+    document.write(age);
+    document.write(city);
+    </script>
+</html>
